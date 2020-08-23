@@ -1,6 +1,8 @@
+import Search from "./models/Search";
 
-async function getResults(query) {
 
-}
+const search =new Search("pizza");
+console.log(search);
+search.getResults();
 
-getResults();
+
