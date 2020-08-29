@@ -47,15 +47,68 @@ const renderRecipe=(recipe)=>{
 };
 
 export const renderResults=(recipes,page=1,resPerPage=10)=>
-{
-    //console.log(recipes);
-    const start=0;
-    const end=10;
+{     
+    //render result of current page  //console.log(recipes);
+    const start=(page-1)*resPerPage;
+    const end=page*resPerPage;
 
-    
-
-    recipes.forEach((recipe)=>{
+    let recipesForThisPage=recipes.slice(start,end);
+    recipesForThisPage.forEach((recipe)=>{
         renderRecipe(recipe);
     });
+    debugger;
+    //render pagination buttons
+    renderButton(page,recipes.length,resPerPage);
+};
 
+const renderButton=(page,numResults,resPerPage)=>
+{
+    debugger;
+    const pages=Math.ceil(numResults/resPerPage);
+    let button;
+    if(page===1 && pages>1)
+    {
+        //Button to go to next page
+        button=createButton(page,"next");
+    }
+    else if(page===pages && pages>1)
+    {
+        //Button to go to prev page
+        button=createButton(page,"prev");
+    }
+    else if(page<pages){
+        //Button to go to prev and next both
+        button=`${createButton(page,"prev")}
+                ${createButton(page,"next")}
+        `;
+    }
+    elements.searchResPages.insertAdjacentHTML("afterbegin",button);
+};
+
+const createButton=(page,type)=>
+{
+    if(type==="prev")
+    {
+        const buttonPrev=`
+        <button class="btn-inline results__btn--prev" data-goto=${page-1}>
+            <svg class="search__icon">
+                <use href="img/icons.svg#icon-triangle-left"></use>
+            </svg>
+            <span>${page-1}</span>
+        </button>
+        `;
+        return buttonPrev;
+    }
+    else if(type==="next")
+    {
+        const buttonNext=`
+        <button class="btn-inline results__btn--next" data-goto=${page+1}>
+            <svg class="search__icon">
+                <use href="img/icons.svg#icon-triangle-right"></use>
+            </svg>
+            <span>${page+1}</span>
+        </button>
+        `;
+        return buttonNext;
+    }
 };
