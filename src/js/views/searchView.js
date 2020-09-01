@@ -8,7 +8,14 @@ export const clearInput=()=>{
 
 export const clearResults=()=>{
     elements.searchResultList.innerHTML="";
+    elements.searchResPages.innerHTML="";
+
 }
+
+export const clearResButton=()=>{
+    elements.searchResPages.innerHTML="";
+}
+
 
 // pasta with tamato and spanish
 const limitRecipeTitle=(title,limit=17)=>{
@@ -56,14 +63,14 @@ export const renderResults=(recipes,page=1,resPerPage=10)=>
     recipesForThisPage.forEach((recipe)=>{
         renderRecipe(recipe);
     });
-    debugger;
+    //debugger;
     //render pagination buttons
     renderButton(page,recipes.length,resPerPage);
 };
 
 const renderButton=(page,numResults,resPerPage)=>
 {
-    debugger;
+    //debugger;
     const pages=Math.ceil(numResults/resPerPage);
     let button;
     if(page===1 && pages>1)

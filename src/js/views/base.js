@@ -4,7 +4,9 @@ export const elements={
     searchResultList:document.querySelector(".results__list"),
     searchRes:document.querySelector(".results"),
     searchResPages:document.querySelector(".results__pages"),
-    
+    searchResPaginationPrevButton:document.querySelector(".results__btn--prev"),
+    searchResPaginationNextButton:document.querySelector(".results__btn--next"),
+    recipeResult:document.querySelector(".recipe")
 };
 
 export const elementStrings={
