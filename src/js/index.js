@@ -119,18 +119,6 @@ window.addEventListener("load",controlRecipe);
 
 ["hashchange","load"].forEach(e=>window.addEventListener(e,controlRecipe));
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 elements.searchResultList.addEventListener("click",e=>{
     recipeViewController(e.target);
