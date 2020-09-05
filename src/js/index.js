@@ -2,7 +2,7 @@ import Search from "./models/Search";
 import * as searchView from "./views/searchView"
 import { elements,renderLoader,clearLoader } from "./views/base";
 import Recipe from "./models/Recipe";
-import { clearRecipeView,renderRecipe } from "./views/recipeView";
+import * as recipeView from "./views/recipeView";
 /*Global state of the app
 --Search object
 --Current recipe object
@@ -13,8 +13,8 @@ const state={};
 
 const controlSearch=async ()=>{
     //1) Get the query from the view
-   // const query=searchView.getInput();  //TODO
-    const query="pizza";
+    const query=searchView.getInput();  //TODO
+   // const query="pizza";
     console.log(query);
     if(query)
     {
@@ -100,12 +100,19 @@ const controlRecipe=async ()=>{
     if(id)
     {
         //prepare the UI for the changes
+        recipeView.clearRecipe();
+        renderLoader(elements.recipeResult);
 
+        //highlight selected seach item
+        if(state.search)
+        {
+            searchView.highlightedSelected(id);
+        }
         //Create new Recipe Object
         state.recipe=new Recipe(id);
         
-        //testing 
-        window.r=state.recipe;
+            //testing 
+           // window.r=state.recipe;
         try
         {
              //Get the recipe data
@@ -114,11 +121,14 @@ const controlRecipe=async ()=>{
             //calculate serving and time
             state.recipe.calcTime();
             state.recipe.calcServing();
+            console.log(state.recipe.ingredients);
             state.recipe.parseIngredients();
 
             
             //render Recipe
-            console.log(state.recipe);
+            // console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
         }
         catch(e)
         {

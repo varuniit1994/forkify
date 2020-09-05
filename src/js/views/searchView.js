@@ -16,6 +16,19 @@ export const clearResButton=()=>{
     elements.searchResPages.innerHTML="";
 }
 
+export const highlightedSelected=(id)=>{
+
+    const resultsArr=Array.from(document.querySelectorAll(".results__link"));
+    console.log(resultsArr);
+    resultsArr.forEach(el=>{
+        el.classList.remove("results__link--active");
+    });
+
+    let ele=document.querySelector(`a[href="#${id}"]`);
+    ele.classList.add("results__link--active");
+
+}
+
 
 // pasta with tamato and spanish
 const limitRecipeTitle=(title,limit=17)=>{
