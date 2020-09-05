@@ -4,30 +4,27 @@ export const getInput=()=>elements.searchInput.value;
 
 export const clearInput=()=>{
     elements.searchInput.value="";
-}
+};
 
 export const clearResults=()=>{
     elements.searchResultList.innerHTML="";
     elements.searchResPages.innerHTML="";
-
-}
+};
 
 export const clearResButton=()=>{
     elements.searchResPages.innerHTML="";
-}
+};
 
 export const highlightedSelected=(id)=>{
-
     const resultsArr=Array.from(document.querySelectorAll(".results__link"));
-    console.log(resultsArr);
+    //console.log(resultsArr);
     resultsArr.forEach(el=>{
         el.classList.remove("results__link--active");
     });
 
     let ele=document.querySelector(`a[href="#${id}"]`);
     ele.classList.add("results__link--active");
-
-}
+};
 
 
 // pasta with tamato and spanish

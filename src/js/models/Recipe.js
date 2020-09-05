@@ -104,7 +104,6 @@ export default class Recipe
             }
             return objIng;
         });
-
         this.ingredients=newIngrdients;      
     }
 }

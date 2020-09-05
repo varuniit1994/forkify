@@ -15,7 +15,7 @@ const controlSearch=async ()=>{
     //1) Get the query from the view
     const query=searchView.getInput();  //TODO
    // const query="pizza";
-    console.log(query);
+   //console.log(query);
     if(query)
     {
         //2) Create a New search object and add it to the state object
@@ -63,39 +63,13 @@ elements.searchResPages.addEventListener("click",e=>{
     }
 });
 
-
-/*
-elements.searchResultList.addEventListener("click",e=>{
-    recipeViewController(e.target);
-});
-
-const recipeViewController=async (target)=>{
-        const anchor=target.closest(".results__link");
-        const id=anchor.href.split("#")[1];
-       // console.log(anchor.href.split("#")[1]);
-
-        state.recipe=new Recipe(id);
-
-        //3)prepare UI for the result
-        clearRecipeView();
-        renderLoader(elements.recipeResult);
-
-        //4)search for recipes
-        await state.recipe.getRecipe();
-        
-        //5)Render results on UI
-        clearLoader();
-        renderRecipe(state.recipe);
-};
-*/
-
 /*
 Recipe Controller
 */
 
 const controlRecipe=async ()=>{
     const id=window.location.hash.replace("#","");
-    console.log(id);
+    //console.log(id);
 
     if(id)
     {
@@ -121,7 +95,7 @@ const controlRecipe=async ()=>{
             //calculate serving and time
             state.recipe.calcTime();
             state.recipe.calcServing();
-            console.log(state.recipe.ingredients);
+            //console.log(state.recipe.ingredients);
             state.recipe.parseIngredients();
 
             
@@ -145,3 +119,65 @@ window.addEventListener("load",controlRecipe);
 
 ["hashchange","load"].forEach(e=>window.addEventListener(e,controlRecipe));
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+elements.searchResultList.addEventListener("click",e=>{
+    recipeViewController(e.target);
+});
+
+const recipeViewController=async (target)=>{
+        const anchor=target.closest(".results__link");
+        const id=anchor.href.split("#")[1];
+       // console.log(anchor.href.split("#")[1]);
+
+        state.recipe=new Recipe(id);
+
+        //3)prepare UI for the result
+        clearRecipeView();
+        renderLoader(elements.recipeResult);
+
+        //4)search for recipes
+        await state.recipe.getRecipe();
+        
+        //5)Render results on UI
+        clearLoader();
+        renderRecipe(state.recipe);
+};
+*/
