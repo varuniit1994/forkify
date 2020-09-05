@@ -131,32 +131,6 @@ window.addEventListener("load",controlRecipe);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 elements.searchResultList.addEventListener("click",e=>{
     recipeViewController(e.target);
