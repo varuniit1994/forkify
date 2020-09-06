@@ -6,7 +6,8 @@ export const elements={
     searchResPages:document.querySelector(".results__pages"),
     searchResPaginationPrevButton:document.querySelector(".results__btn--prev"),
     searchResPaginationNextButton:document.querySelector(".results__btn--next"),
-    recipeResult:document.querySelector(".recipe")
+    recipeResult:document.querySelector(".recipe"),
+    shopping:document.querySelector("shopping__list")
 };
 
 export const elementStrings={
