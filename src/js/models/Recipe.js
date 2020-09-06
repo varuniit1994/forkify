@@ -106,5 +106,16 @@ export default class Recipe
         });
         this.ingredients=newIngrdients;      
     }
+
+    updateServing(type)
+    {
+        //serving
+        const newServing=type==="dec"?(this.serving-1):(this.serving+1);
+        //Ingridient
+        this.ingredients.forEach(el=>{
+            el.count=el.count*(newServing/this.serving);
+        });
+        this.serving=newServing;
+    }
 }
 

@@ -112,12 +112,33 @@ const controlRecipe=async ()=>{
     }
 };
 
+["hashchange","load"].forEach(e=>window.addEventListener(e,controlRecipe));
+
+
+//Handling recipe button Click
+elements.recipeResult.addEventListener("click",e=>{
+     if(e.target.matches(".btn-decrease, .btn-decrease *"))
+     {
+        //Decrease Button is clicked
+        if(state.recipe.serving>1)
+        {
+            state.recipe.updateServing("dec");
+        }
+     }
+     else if(e.target.matches(".btn-increase, .btn-increase *"))
+     {
+        //Increase button is clicked
+        state.recipe.updateServing("inc")
+     }
+     recipeView.updateServingIngredients(state.recipe);
+});
+
+
+
 /*
 window.addEventListener('hashchange',controlRecipe);
 window.addEventListener("load",controlRecipe);
 */
-
-["hashchange","load"].forEach(e=>window.addEventListener(e,controlRecipe));
 
 /*
 elements.searchResultList.addEventListener("click",e=>{
