@@ -70,7 +70,7 @@ elements.searchForm.addEventListener("submit",e=>{
 elements.searchResPages.addEventListener("click",e=>{
     const btn=e.target.closest(".btn-inline");
    // console.log(e.target);
-    console.log(btn.dataset.goto);
+    //console.log(btn.dataset.goto);
     if(btn)
     {
         const goToPage=btn.dataset.goto;
@@ -130,13 +130,15 @@ const controlRecipe=async ()=>{
                 recipeView.renderRecipe(state.recipe,state.likes.isLiked(tempId));
             }
             
+            /*
+             const tempId=state.recipe.id;
             console.log(parseInt(tempId));
             if(state.likes)
             {
                 console.log(state.likes);
                 console.log(state.likes.isLiked(tempId));
             }
-                       
+            */          
         }
         catch(e)
         {
