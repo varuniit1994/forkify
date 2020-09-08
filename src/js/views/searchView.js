@@ -14,7 +14,9 @@ export const clearResults=()=>{
 export const clearResButton=()=>{
     elements.searchResPages.innerHTML="";
 };
+//********************************************************************************************************************
 
+//********************************************************************************************************************
 export const highlightedSelected=(id)=>{
     const resultsArr=Array.from(document.querySelectorAll(".results__link"));
     //console.log(resultsArr);
@@ -22,13 +24,18 @@ export const highlightedSelected=(id)=>{
         el.classList.remove("results__link--active");
     });
 
-    let ele=document.querySelector(`a[href="#${id}"]`);
-    ele.classList.add("results__link--active");
+    let ele=document.querySelector(`.results__link[href*="${id}"]`);
+    if(ele)
+    {
+        ele.classList.add("results__link--active");
+    }
+   
 };
+//********************************************************************************************************************
 
-
+//********************************************************************************************************************
 // pasta with tamato and spanish
-const limitRecipeTitle=(title,limit=17)=>{
+export const limitRecipeTitle=(title,limit=17)=>{
     const newLetter=[];
     if(title.length>limit)
     {
@@ -45,8 +52,10 @@ const limitRecipeTitle=(title,limit=17)=>{
     }
     return title;
 }
+//********************************************************************************************************************
 
 
+//********************************************************************************************************************
 const renderRecipe=(recipe)=>{
     const markup=`
     <li>
@@ -62,7 +71,9 @@ const renderRecipe=(recipe)=>{
     </li>`;
     elements.searchResultList.insertAdjacentHTML("beforeend",markup);
 };
+//********************************************************************************************************************
 
+//********************************************************************************************************************
 export const renderResults=(recipes,page=1,resPerPage=10)=>
 {     
     //render result of current page  //console.log(recipes);
@@ -77,7 +88,10 @@ export const renderResults=(recipes,page=1,resPerPage=10)=>
     //render pagination buttons
     renderButton(page,recipes.length,resPerPage);
 };
+//********************************************************************************************************************
 
+
+//********************************************************************************************************************
 const renderButton=(page,numResults,resPerPage)=>
 {
     //debugger;
@@ -101,7 +115,9 @@ const renderButton=(page,numResults,resPerPage)=>
     }
     elements.searchResPages.insertAdjacentHTML("afterbegin",button);
 };
+//********************************************************************************************************************
 
+//********************************************************************************************************************
 const createButton=(page,type)=>
 {
     if(type==="prev")
@@ -129,3 +145,4 @@ const createButton=(page,type)=>
         return buttonNext;
     }
 };
+//********************************************************************************************************************

@@ -1,10 +1,13 @@
 import { elements } from "./base";
 import { Fraction } from "fractional";
 
+//********************************************************************************************************************
 export const clearRecipe=()=>{
     elements.recipeResult.innerHTML="";
 }
+//********************************************************************************************************************
 
+//********************************************************************************************************************
 const formatCount=(count)=>{
     if(count)
     {
@@ -27,8 +30,9 @@ const formatCount=(count)=>{
     }
     return;
 };
+//********************************************************************************************************************
 
-
+//********************************************************************************************************************
 const createIngredient=(ingredient)=>{
     let markup=`
     <li class="recipe__item">
@@ -44,9 +48,13 @@ const createIngredient=(ingredient)=>{
     `;
     return markup;
 }
+//********************************************************************************************************************
 
-export const renderRecipe=(recipe)=>{
-    const markup=`
+//********************************************************************************************************************
+export const renderRecipe=(recipe,isLiked)=>{
+   // debugger;
+    const iconString=isLiked?"icon-heart":"icon-heart-outlined";
+const markup=`
 <figure class="recipe__fig">
     <img src="${recipe.image_url}" alt="${recipe.title}" class="recipe__img">
     <h1 class="recipe__title">
@@ -84,7 +92,7 @@ export const renderRecipe=(recipe)=>{
     </div>
     <button class="recipe__love">
         <svg class="header__likes">
-            <use href="img/icons.svg#icon-heart-outlined"></use>
+            <use href="img/icons.svg#icon-heart${ isLiked?"":"-outlined"}"></use>
         </svg>
     </button>
 </div>
@@ -120,6 +128,7 @@ export const renderRecipe=(recipe)=>{
  elements.recipeResult.insertAdjacentHTML("afterbegin",markup);
 };
 
+//********************************************************************************************************************
 export const updateServingIngredients=(recipe)=>{
 
     //update the servings
@@ -132,8 +141,10 @@ export const updateServingIngredients=(recipe)=>{
         countElement[index].textContent=formatCount(element.count);
     });
 };
+//********************************************************************************************************************
 
 
+//********************************************************************************************************************
 
 /*
 export const clearRecipeView=()=>{
@@ -283,3 +294,4 @@ export const renderRecipe=(recipe)=>{
         elements.recipeResult.insertAdjacentHTML("beforeend",markup);
 }
 */
+//********************************************************************************************************************
