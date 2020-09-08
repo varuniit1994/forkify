@@ -16,6 +16,18 @@ window.state=state;
 */
 //********************************************************************************************************************
 const state={};
+
+
+//Restore liked  recipes on page load
+window.addEventListener("load",()=>{
+    state.likes=new Likes();
+    state.likes.readStorage();
+    likeView.toggleLikeMenu(state.likes.getNumLikes());
+
+    state.likes.likes.forEach(element=>likeView.addLikedRecipe(element));
+});
+
+
 const controlSearch=async ()=>{
     //1) Get the query from the view
     const query=searchView.getInput();  //TODO
